@@ -7,8 +7,8 @@ _stderr = sys.stderr
 sys.version
 
 # Working directory containing snATAC-seq and snRNA-seq data
-work_dir = '/n/scratch3/users/x/xl266/scenic_plus/nucleus_accumbens_Mar25/'
-tmp_dir = '/n/scratch3/users/x/xl266/tmp'
+work_dir = '/path/to/scenic_plus/workdir/'
+tmp_dir = '/path/to/tmp'
 
 
 #make a directory for to store the processed scRNA-seq data.
@@ -17,7 +17,7 @@ if not os.path.exists(os.path.join(work_dir, 'scRNA')):
 
 
 # Read in AnnData using scanpy
-anndata_path = "/n/scratch3/users/p/pab1164/NAc/NAc_IdentsStored_MuSeurat.h5ad"
+anndata_path = "/path/to/NAc_IdentsStored_MuSeurat.h5ad"
 import scanpy as sc
 adata = sc.read_h5ad(anndata_path)
 
@@ -29,7 +29,7 @@ if not os.path.exists(os.path.join(work_dir, 'scATAC')):
     os.makedirs(os.path.join(work_dir, 'scATAC'))
     
 import pandas as pd
-nucl_acc_atac_metadata_path = '/n/scratch3/users/x/xl266/scenic_plus/nucleus_accumbens_Mar25/data/nucleus_accumbens_metadata.csv'
+nucl_acc_atac_metadata_path = '/path/to/nucleus_accumbens_metadata.csv'
 nucl_acc_metadata_anchored_atac = pd.read_csv(nucl_acc_atac_metadata_path, index_col=0)
 
 cell_data = pd.DataFrame(nucl_acc_metadata_anchored_atac['Identities'])
@@ -57,7 +57,7 @@ bc_passing_filters['nucl_acc'] = list(set(cell_data.index))
 
 # Load ATAC data
 import pickle
-fragments_path = '/n/scratch3/users/p/pab1164/NAc/fragments.tsv.gz'
+fragments_path = '/path/to/fragments.tsv.gz'
 fragments_dict = {'nucl_acc': fragments_path}
 path_to_regions = {'nucl_acc':os.path.join(work_dir, 'scATAC/nucl_acc_peaks_atac.bed')}
 path_to_blacklist= os.path.join(work_dir, 'data/mm10-blacklist.v2.bed')
@@ -190,9 +190,9 @@ for key in region_sets.keys():
     print(f'{key}: {region_sets[key].keys()}')
     
 
-motif_annotation = '/n/scratch3/users/x/xl266/scenic_plus/drg_atac_rna_v2/data/motif_data_scenic/motifs-v10nr_clust-nr.mgi-m0.001-o0.0.tbl'
-encode_db_scores_path = '/n/scratch3/users/x/xl266/scenic_plus/drg_atac_rna_v2/data/motif_data_scenic/mm10_screen_v10_clust.regions_vs_motifs.scores.feather'
-encode_db_rankings_path = '/n/scratch3/users/x/xl266/scenic_plus/drg_atac_rna_v2/data/motif_data_scenic/mm10_screen_v10_clust.regions_vs_motifs.rankings.feather'
+motif_annotation = '/path/to/motif_data_scenic/motifs-v10nr_clust-nr.mgi-m0.001-o0.0.tbl'
+encode_db_scores_path = '/path/to/motif_data_scenic/mm10_screen_v10_clust.regions_vs_motifs.scores.feather'
+encode_db_rankings_path = '/path/to/motif_data_scenic/mm10_screen_v10_clust.regions_vs_motifs.rankings.feather'
 
 if not os.path.exists(os.path.join(work_dir, 'motifs')):
     os.makedirs(os.path.join(work_dir, 'motifs'))
@@ -319,7 +319,7 @@ from scenicplus.wrappers.run_scenicplus import run_scenicplus
 # Only use save_partial = True if you are running from the very beginning / earlier in the pipeline.
 # Otherwise, scenicplus will resave the entire object (takes time) at every if save_partial statement
 
-bedToBigBed_dir = '/n/scratch3/users/x/xl266/scenic_plus/drg_atac_rna_v2/'
+bedToBigBed_dir = '/path/to/dir/containing/bedToBigBed/'
          
 try:
     run_scenicplus(
@@ -327,7 +327,7 @@ try:
         variable = ['Identities'],
         species = 'mmusculus',
         assembly = 'mm10',
-        tf_file = '/n/scratch3/users/x/xl266/scenic_plus/drg_atac_rna/data/allTFs_mm.txt',
+        tf_file = '/path/to/allTFs_mm.txt',
         save_path = os.path.join(work_dir, 'scenicplus'),
         biomart_host = biomart_host,
         upstream = [1000, 150000],
