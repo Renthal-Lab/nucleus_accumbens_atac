@@ -1,6 +1,8 @@
 # Epigenomic profiling of mouse nucleus accumbens at single-cell resolution
 This repository contains companion code for Bhatia &amp; Yang et al. (2023) and includes code for gene regulatory network (GRN) discovery, and analyses of single-nucleus chromatin accessibility and gene expression data for the mouse nucleus accumbens.
 
+Raw FASTQ files, processed Seurat object and associated meta data with cell type annotations can be found at [GSE232774](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE232774)
+
 ## Software requirements
 - [SCENIC+](https://scenicplus.readthedocs.io/en/latest/install.html)
   - and associated dependencies
