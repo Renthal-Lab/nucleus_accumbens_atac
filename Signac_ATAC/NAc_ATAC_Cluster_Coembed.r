@@ -1,3 +1,6 @@
+#Workflow adapted from Signac's Adult mouse brain vignette: https://stuartlab.org/signac/articles/mouse_brain_vignette.html
+#Coembedding adapted from Seurat's ATAC-RNA integration vignette: https://satijalab.org/seurat/articles/atacseq_integration_vignette.html
+
 library(Signac)
 library(Seurat)
 library(GenomeInfoDb)
