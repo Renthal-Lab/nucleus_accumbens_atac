@@ -8,6 +8,7 @@ Raw FASTQ files, processed Seurat object and associated meta data with cell type
 - [ChIPseeker](http://bioconductor.org/packages/devel/bioc/vignettes/ChIPseeker/inst/doc/ChIPseeker.html)
 - [SCENIC+](https://scenicplus.readthedocs.io/en/latest/install.html)
   - and associated dependencies
+  - Development version '0.1.dev446+g5cf2469' with a Python 3.7.4 environment was used for analyses in this paper.
 - [pandas](https://pandas.pydata.org/docs/getting_started/install.html)
 
 ## Required data
